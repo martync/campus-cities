@@ -2,6 +2,7 @@ CITIES_FILE = "datas/villes_france.csv"
 LIMIT_CITIES_NUMBER = 50
 
 SCHOOL_FILE = "datas/school.csv"
+SANTE_FILE = "datas/insee_metropole_d201_bpe_p.csv"
 
 # fmt: off
 LYON = ["69123", ["69300", "69381", "69382", "69383", "69384", "69385", "69386", "69387", "69388", "69389", "69901"]]  # noqa

@@ -1,9 +1,13 @@
 import pandas as pd
-from apps.cities.helpers import get_big_cities, alter_insee_city_district
+from apps.cities.controlers import get_big_cities
+from apps.cities.models import City
+from apps.cities.utils import alter_insee_city_district
 from settings import SCHOOL_FILE
 
+from .models import School
 
-def compute_school_results():
+
+def store_school_results():
     # On ouvre le fichier des résultats scolaires
     school_results = (
         alter_insee_city_district(
@@ -29,6 +33,19 @@ def compute_school_results():
         school_df["Taux_Mention_brut_toutes_series"] + school_df["Taux Brut de Réussite Total séries"]
     ) / 2
 
-    school_df = school_df.sort_values(by=["school_score"], ascending=False)[school_df["school_score"].notnull()]
+    school_df = school_df.rename(
+        columns={
+            "Code commune": "city_id",
+            "school_score": "score",
+            "Taux_Mention_brut_toutes_series": "taux_mention",
+            "Taux Brut de Réussite Total séries": "taux_reussite",
+        }
+    )[["city_id", "score", "taux_mention", "taux_reussite"]]
 
-    return school_df
+    School.delete().execute()
+    school_df = school_df.sort_values(by=["score"], ascending=False)[school_df["score"].notnull()]
+    School.insert_many(list(school_df.to_dict("records"))).execute()
+
+
+def get_school_results():
+    return pd.DataFrame(School.select(City, School).join(City).dicts()).sort_values(by=["score"], ascending=False)

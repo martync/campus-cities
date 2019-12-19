@@ -1,6 +1,9 @@
 # Classement des villes de France
 
 
+[![Build Status](https://travis-ci.com/martync/campus-cities.svg?branch=master)](https://travis-ci.com/martync/campus-cities)
+
+
 ## Objectifs 
 Vous développerez une application permettant de visualiser un classement des villes de France sur plusieurs critères de qualité de vie : emploi, qualité de l’air, logement, immobilier...
 

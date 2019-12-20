@@ -5,6 +5,12 @@ from settings import SANTE_FILE
 
 
 def compute_sante_results():
+    """Enregistre le nombre de patients pour
+    un médecin dans chaque grande ville
+
+    Returns:
+        pandas.DataFrame
+    """
     sante_results = (
         alter_insee_city_district(
             pd.read_csv(SANTE_FILE, sep=",", low_memory=False, usecols=["gid", "c_depcom"]), "c_depcom"

@@ -3,13 +3,7 @@ python:
   - 3.5
   - 3.6
 before_install:
-  - python --version
   - pip install -U pytest
-  - pip install pytest-cov
-  - pip install codecov
 install:
-  - pip install -r requirements.txt
-script: pytest --cov=./ # run tests
-after_success:
-  - codecov # submit coverage
-
+  - pip install pandas peewee matplotlib haversine
+script: pytest -v  # run tests

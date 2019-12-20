@@ -7,6 +7,11 @@ from .utils import concatenate_air_results
 
 
 def store_air_results_to_db():
+    """
+    Aggrège et calcul les relevés d'air.
+    Enregistre une entrée pour chaque relevé situé à 15km et moins
+    de la ville.
+    """
     Air.delete().execute()
     big_cities = get_big_cities()
     data = concatenate_air_results()
@@ -27,6 +32,13 @@ def store_air_results_to_db():
 
 
 def get_airquality_results():
+    """Retourne un DataFrame contenant les
+    données de qualité de l'air pour chaque
+    ville.
+
+    Returns:
+        pandas.DataFrame
+    """
     df = pd.DataFrame(list(Air.select().dicts()))
 
     dfs = []

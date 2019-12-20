@@ -3,6 +3,8 @@ from .controlers import get_airquality_results
 
 
 def show_air_quality_plot():
+    """Affiche un graphique de qualité de l'air
+    """
     air_results = get_airquality_results()
     x = air_results[["ville_nom", "NO2", "PM10", "PM25"]]
     y = x.set_index("ville_nom")
@@ -12,5 +14,7 @@ def show_air_quality_plot():
 
 
 def show_air_quality_table():
+    """Print le dataframe de qualité de l'air
+    """
     air_results = get_airquality_results()
     print(air_results)

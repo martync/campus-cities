@@ -7,6 +7,12 @@ from settings import AIR_DIRECTORY, AIR_TYPES
 
 
 def concatenate_air_results():
+    """Concatène les données de relevés de
+    l'air à partir des fichiers json.
+
+    Returns:
+        pandas.DataFrame
+    """
     main_df = []
     for airtype in AIR_TYPES:
         path = os.path.join(AIR_DIRECTORY, airtype)

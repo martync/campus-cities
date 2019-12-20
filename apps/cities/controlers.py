@@ -4,6 +4,8 @@ from .models import City
 
 
 def store_cities():
+    """Enregistre les villes de France dans la table.
+    """
     df = pd.read_csv(
         CITIES_FILE,
         low_memory=False,

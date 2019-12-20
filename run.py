@@ -21,24 +21,6 @@ def store_all():
     show_schools_plot()
 
 
-def total_result():
-    pass
-
-
-#     from apps.air.controlers import get_airquality_results
-#     from apps.cities.controlers import get_big_cities
-#     from apps.sante.controlers import compute_sante_results
-#     from apps.school.controlers import get_school_results
-
-#     cities = get_big_cities()
-#     air = get_airquality_results()
-#     sante = compute_sante_results()
-#     school = get_school_results()
-
-#     print(air["total"].max())
-#     print(air["total"].min())
-
-
 routes = {
     # MAIN
     "store_all": store_all,
@@ -57,9 +39,6 @@ routes = {
     "store_school_results": store_school_results,
     "show_schools_table": show_schools_table,
     "show_schools_plot": show_schools_plot,
-    "show_schools_plot": show_schools_plot,
-    # TOTAL
-    "total_result": total_result,
 }
 
 
